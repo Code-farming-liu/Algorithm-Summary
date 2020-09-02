@@ -9,6 +9,7 @@ import java.util.Stack;
  **/
 
 public class Test04 {
+    //使用stack辅助实现
     public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
         ArrayList<Integer> list = new ArrayList();
         Stack<Integer> stack = new Stack<>();
@@ -18,6 +19,26 @@ public class Test04 {
         }
         while(!stack.isEmpty()) {
             list.add(stack.pop());
+        }
+        return list;
+    }
+    
+    //先反转 后遍历
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+        ArrayList<Integer> list = new ArrayList();
+        ListNode pre = null;
+        ListNode curr = listNode;
+        while(curr != null) {
+            //保存当前节点的下一个节点
+            ListNode temp = curr.next;
+            //断开连接，并将节点加入到pre的前面
+            curr.next = pre;
+            pre = curr;
+            curr = temp;
+        }
+        while(pre != null) {
+            list.add(pre.val);
+            pre = pre.next;
         }
         return list;
     }

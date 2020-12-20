@@ -1,3 +1,5 @@
+package offer;
+
 import java.util.ArrayList;
 import java.util.Stack;
 

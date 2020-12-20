@@ -1,3 +1,5 @@
+package offer;
+
 /**
  * @ClassName: Test02
  * @Description: 题目描述
@@ -8,7 +10,18 @@
  * @Author: Admin
  **/
 
-public class Test02 {
+public class Code_44 {
+    /**
+     * @Author Admin
+     * @Description
+     * 思路分析：
+     * 例如 student. a am I
+     * 我们先将整个句子进行翻转，原句即为 I ma a .tneduts
+     * 之后我们根据 单词之间使用空格分隔，因此将对应的单词进行翻转 原句即为 I am a .tneduts
+     * 最后 我们将最后一个单词翻转 即为 最终结果 I am a student.
+     * @param str
+     * @return java.lang.String
+     **/
     public String ReverseSentence(String str) {
         char[] chars = str.toCharArray();
         reverse(chars, 0, chars.length - 1);

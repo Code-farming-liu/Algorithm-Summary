@@ -1,8 +1,10 @@
+package offer;
+
 import java.util.Arrays;
 
 /**
  * @ClassName: Test40
- * @Description: 题目描述
+ * @Description: 扑克牌顺子
  * LL今天心情特别好,因为他去买了一副扑克牌,
  * 发现里面居然有2个大王,2个小王(一副牌原本是54张^_^)...他随机从中抽出了5张牌,
  * 想测测自己的手气,看看能不能抽到顺子,如果抽到的话,他决定去买体育彩票,
@@ -14,8 +16,18 @@ import java.util.Arrays;
  * @Author: Admin
  **/
 
-public class Test40 {
-
+public class Code_45 {
+    /**
+     * @param numbers
+     * @Author: Admin
+     * @Description: 思路描述：
+     * 我们首先需要对
+     * 数组进行排序，
+     * 找出王的数量，
+     * 之后根据对应的两个数之间的差值，看看是否可以使用王去补齐 可以返回true 否则false
+     * 当然 如果出现一个对子 那么肯定就不是顺子 例如 7 7 x x x 怎么都不可能是顺子 因此出现对子 直接返回。
+     * @return: boolean
+     */
     public boolean isContinuous(int[] numbers) {
         int numOfZero = 0;
         int numOfInterval = 0;

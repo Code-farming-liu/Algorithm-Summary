@@ -1,3 +1,5 @@
+package offer;
+
 /**
  * @ClassName: Test41
  * @Description: 孩子们的游戏（圆圈中最后剩下的数）

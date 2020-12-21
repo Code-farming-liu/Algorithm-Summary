@@ -1,3 +1,5 @@
+package offer;
+
 /**
  * @ClassName: Test11
  * @Description: 二进制中1的个数
@@ -5,7 +7,7 @@
  * @Author: Admin
  **/
 
-public class Test11 {
+public class Code_11 {
     /**
      * @param n
      * @Author: Admin

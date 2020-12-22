@@ -1,3 +1,5 @@
+package LeetCode;
+
 /**
  * @ClassName: Test85
  * Description: 寻找峰值
@@ -24,7 +26,8 @@
  * @Author: Admin
  **/
 
-public class Test85 {
+public class Code_162 {
+
     //    一次遍历 只用判断前一个是否大于后一个数
 //     如果大于下一个数
 //     证明 肯定是下降趋势 因此直接返回对应的这个端点  这个端点是峰值
@@ -39,6 +42,7 @@ public class Test85 {
         }
         return nums.length - 1;
     }
+
     public int findPeakElement(int[] nums) {
         int left = 0, right = nums.length - 1;
         while (left < right) {

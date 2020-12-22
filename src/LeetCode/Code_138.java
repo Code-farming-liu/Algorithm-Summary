@@ -1,3 +1,6 @@
+package LeetCode;
+
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,8 +51,28 @@ import java.util.Map;
  * @Author: Admin
  **/
 
-public class Test79 {
+public class Code_138 {
     //先遍历 将所有的节点保存在 map中 然后在进行连线
+
+    /**
+     * @param head
+     * @Author: Admin
+     * @Description: 我们可以用三步走来搞定这个问题
+     * 第一步，根据遍历到的原节点创建对应的新节点，每个新创建的节点是在原节点后面，
+     * 比如下图中原节点1不再指向原原节点2，而是指向新节点1
+     * <p>
+     * 第二步是最关键的一步，用来设置新链表的随机指针
+     * <p>
+     * 上图中，我们可以观察到这么一个规律
+     * <p>
+     * 原节点1的随机指针指向原节点3，新节点1的随机指针指向的是原节点3的next
+     * 原节点3的随机指针指向原节点2，新节点3的随机指针指向的是原节点2的next
+     * 也就是，原节点i的随机指针(如果有的话)，指向的是原节点j
+     * 那么新节点i的随机指针，指向的是原节点j的next
+     * <p>
+     * 第三步就简单了，只要将两个链表分离开，再返回新链表就可以了
+     * @return: LeetCode.Test79.Node
+     */
     public Node copyRandomList(Node head) {
         if (head == null) {
             return null;
@@ -68,6 +91,30 @@ public class Test79 {
         }
         return lookup.get(head);
     }
+
+    /**
+     * @param head
+     * @Author: Admin
+     * @Description: 使用HashMap 辅助
+     *
+     * 我们用哈希表来解决这个问题
+     * 首先创建一个哈希表，再遍历原链表，遍历的同时再不断创建新节点
+     * 我们将原节点作为key，新节点作为value放入哈希表中
+     *
+     * 第二步我们再遍历原链表，这次我们要将新链表的next和random指针给设置上
+     *
+     * 从上图中我们可以发现，原节点和新节点是一一对应的关系，所以
+     *
+     * map.get(原节点)，得到的就是对应的新节点
+     * map.get(原节点.next)，得到的就是对应的新节点.next
+     * map.get(原节点.random)，得到的就是对应的新节点.random
+     * 所以，我们只需要再次遍历原链表，然后设置：
+     * 新节点.next -> map.get(原节点.next)
+     * 新节点.random -> map.get(原节点.random)
+     * 这样新链表的next和random都被串联起来了
+     * 最后，我们然后map.get(head)，也就是对应的新链表的头节点，就可以解决此问题了。
+     * @return: LeetCode.Test79.Node
+     */
     public Node copyRandomList1(Node head) {
         if (head == null) {
             return null;
@@ -76,7 +123,7 @@ public class Test79 {
         Node cur = head;
         while (cur != null) {
             Node tmp = cur.next;
-            cur.next = new Node(cur.val, null, null );
+            cur.next = new Node(cur.val, null, null);
             cur.next.next = tmp;
             cur = tmp;
         }
@@ -102,5 +149,19 @@ public class Test79 {
         // 结束标志null
         cur.next = null;
         return copy_head;
+    }
+
+    public static class Node {
+        int val;
+        LeetCode.Node left;
+        LeetCode.Node right;
+        Node next;
+        Node random;
+
+        public Node(int val, Node next, Node random) {
+            this.val = val;
+            this.next = next;
+            this.random = random;
+        }
     }
 }

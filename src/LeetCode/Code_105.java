@@ -1,28 +1,37 @@
+package LeetCode;
+
 import java.util.Arrays;
 
 /**
  * @ClassName: Test74
  * @Description: 从前序与中序遍历构造二叉树
- *  * 根据一棵树的前序遍历与中序遍历构造二叉树。
- *  *
- *  * 注意:
- *  * 你可以假设树中没有重复的元素。
- *  *
- *  * 例如，给出
- *  *
- *  * 前序遍历 preorder = [3,9,20,15,7]
- *  * 中序遍历 inorder = [9,3,15,20,7]
- *  * 返回如下的二叉树：
- *  *
- *  *     3
- *  *    / \
- *  *   9  20
- *  *     /  \
- *  *    15   7
+ * * 根据一棵树的前序遍历与中序遍历构造二叉树。
+ * *
+ * * 注意:
+ * * 你可以假设树中没有重复的元素。
+ * *
+ * * 例如，给出
+ * *
+ * * 前序遍历 preorder = [3,9,20,15,7]
+ * * 中序遍历 inorder = [9,3,15,20,7]
+ * * 返回如下的二叉树：
+ * *
+ * *     3
+ * *    / \
+ * *   9  20
+ * *     /  \
+ * *    15   7
  * @Author: Admin
  **/
 
-public class Test74 {
+public class Code_105 {
+    /**
+     * @param preorder
+     * @param inorder
+     * @Author: Admin
+     * @Description: 我们利用前序序列寻找根节点，中序序列判断 左右节点
+     * @return: TreeNode
+     */
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         if (preorder.length == 0 || inorder.length == 0) {
             return null;
@@ -39,8 +48,8 @@ public class Test74 {
                 int[] pre_right = Arrays.copyOfRange(preorder, i + 1, preorder.length);
                 int[] in_left = Arrays.copyOfRange(inorder, 0, i);
                 int[] in_right = Arrays.copyOfRange(inorder, i + 1, inorder.length);
-                root.left = buildTree(pre_left,in_left);
-                root.right = buildTree(pre_right,in_right);
+                root.left = buildTree(pre_left, in_left);
+                root.right = buildTree(pre_right, in_right);
                 break;
             }
         }

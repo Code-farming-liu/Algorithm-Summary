@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -30,7 +32,7 @@ import java.util.Queue;
  * @Author: Admin
  **/
 
-public class Test89 {
+public class Code_200 {
     //DFS
     //将二维网格看成一个无向图，竖直或水平相邻的 1 之间有边。
     //

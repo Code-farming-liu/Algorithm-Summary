@@ -1,25 +1,42 @@
+package LeetCode;
+
 import java.util.*;
 
 /**
  * @ClassName: Test64
  * @Description: 合并区间
  * 给出一个区间的集合，请合并所有重叠的区间。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: [[1,3],[2,6],[8,10],[15,18]]
  * 输出: [[1,6],[8,10],[15,18]]
  * 解释: 区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
  * 示例 2:
- *
+ * <p>
  * 输入: [[1,4],[4,5]]
  * 输出: [[1,5]]
  * 解释: 区间 [1,4] 和 [4,5] 可被视为重叠区间。
  * @Author: Admin
  **/
 
-public class Test64 {
+public class Code_56 {
     //先排序 然后判断 下一个区间的左端点是不是小于等于当前区间的右端点 满足条件进行合并
+
+    /**
+     * @param intervals
+     * @Author: Admin
+     * @Description: 思路描述：
+     * 这种我们可以首先对 区间的左端点进行排序，
+     *
+     * 如果是可合并的 那么左端点一定是连续的，
+     *
+     * 然后判断当前区间的右端点是不是大于下一个区间的左端点，
+     * 如果小于，那么将当前区间的左端点作为新区间的左端点，右端点为两个区间最大的右端点。
+     *
+     * 可以用一个队列来进行辅助完成
+     * @return: int[][]
+     */
     public int[][] merge1(int[][] intervals) {
         if (intervals == null || intervals.length == 0) {
             return intervals;

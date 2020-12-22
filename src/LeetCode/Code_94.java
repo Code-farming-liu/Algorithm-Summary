@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -21,7 +23,7 @@ import java.util.Stack;
  * @Author: Admin
  **/
 
-public class Test71 {
+public class Code_94 {
     //最简单的递归遍历
 
     /**

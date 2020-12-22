@@ -1,8 +1,11 @@
+package LeetCode;
+
 /**
  * @ClassName: Test67
  * @Description: 颜色分类
  * 题目描述：
- * 给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
+ * 给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，
+ * 并按照红色、白色、蓝色顺序排列。
  * <p>
  * 此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
  * <p>
@@ -16,8 +19,17 @@
  * @Author: Admin
  **/
 
-public class Test67 {
+public class Code_75 {
     //快排
+
+    /**
+     * @param nums
+     * @Author: Admin
+     * @Description: 思路分析：
+     * 解法一：
+     * 排序 快排
+     * @return: void
+     */
     public void sortColors1(int[] nums) {
         quickSort(nums, 0, nums.length - 1);
     }
@@ -75,6 +87,26 @@ public class Test67 {
     /*
         荷兰三色旗题解
     */
+
+    /**
+     * @param nums
+     * @Author: Admin
+     * @Description: 解法二：
+     * 初始化0的最右边界：p0 = 0。在整个算法执行过程中 nums[idx < p0] = 0.
+     *
+     * 初始化2的最左边界 ：p2 = n - 1。在整个算法执行过程中 nums[idx > p2] = 2.
+     *
+     * 初始化当前考虑的元素序号 ：curr = 0.
+     *
+     * while curr <= p2 :
+     *
+     * 若 nums[curr] = 0 ：交换第 curr个 和 第p0个 元素，并将指针都向右移。
+     *
+     * 若 nums[curr] = 2 ：交换第 curr个和第 p2个元素，并将 p2指针左移 。
+     *
+     * 若 nums[curr] = 1 ：将指针curr右移。
+     * @return: void
+     */
     public static void sortColors(int[] nums) {
         // 对于所有 idx < i : nums[idx < i] = 0
         // j是当前考虑元素的下标

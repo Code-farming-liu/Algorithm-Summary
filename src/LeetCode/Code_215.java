@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -22,7 +24,7 @@ import java.util.Random;
  * @Author: Admin
  **/
 
-public class Test92 {
+public class Code_215 {
     //暴力破解 先排序 后判断
     public int findKthLargest1(int[] nums, int k) {
         Arrays.sort(nums);
@@ -30,6 +32,16 @@ public class Test92 {
     }
 
     //最小堆
+
+    /**
+     * @param nums
+     * @param k
+     * @Author: Admin
+     * @Description: 我们可以使用最小堆来解决，一个个遍历原数组的值，添加到堆中，
+     * 如果堆中元素的个数小于等于k的时候，我们就往堆中添加，添加之后如果堆中元素个数大于k的时候，
+     * 我们就把最顶端的元素给移除掉，因为是最小堆，所以移除的就是堆中最小的值
+     * @return: int
+     */
     public int findKthLargest2(int[] nums, int k) {
         // init heap 'the smallest element first'
         PriorityQueue<Integer> heap =
@@ -76,7 +88,18 @@ public class Test92 {
         return store_index;
     }
 
-    //
+    /**
+     * @param left
+     * @param right
+     * @param k_smallest
+     * @Author: Admin
+     * @Description: 快速排序是先选择一个中枢（一般我们选第一个），
+     * 然后遍历后面的元素，最终会把数组分为两部分，前面部分比中枢值小，
+     * 后面部分大于或等于中枢值，如果交换之后中枢值所在的位置就是从后面数第k个，
+     * 我们直接返回中枢值即可，如果从后面数大于第k个，我们只需按照同样的方式从后面部分开始找即可。
+     * 如果从后面数小于第k个，我们同样从前面部分开始查找，
+     * @return: int
+     */
     public int quickselect(int left, int right, int k_smallest) {
     /*
     Returns the k-th smallest element of list within left..right.

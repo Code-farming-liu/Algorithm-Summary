@@ -1,3 +1,5 @@
+package LeetCode;
+
 /**
  * @ClassName: Test88
  * Description:旋转数组
@@ -21,8 +23,10 @@
  * @Author: Admin
  **/
 
-public class Test88 {
+public class Code_189 {
     //    利用 i + k % length  进行判断在那个位置
+    //    我们可以直接利用一个数组辅助遍历，然后利用 i + k % length 进行判断在那个位置，
+    //    最后在将整个数组复制到原数组
     public static void rotate1(int[] nums, int k) {
         int[] a = new int[nums.length];
         for (int i = 0; i < nums.length; i++) {
@@ -62,9 +66,11 @@ public class Test88 {
         }
     }
     //解法四：三次反转
-//    这个方法基于这个事实：当我们旋转数组 k 次， k % n 个尾部元素会被移动到头部，剩下的元素会被向后移动。
+//    这个方法基于这个事实：当我们旋转数组 k 次， k % n 个尾部元素会被移动到头部，
+//    剩下的元素会被向后移动。
 //
-//    在这个方法中，我们首先将所有元素反转。然后反转前 k 个元素，再反转后面 n-k 个元素，就能得到想要的结果。
+//    在这个方法中，我们首先将所有元素反转。然后反转前 k 个元素，再反转后面 n-k 个元素，
+//    就能得到想要的结果。
 
     public static void rotate3(int[] nums, int k) {
         k %= nums.length;

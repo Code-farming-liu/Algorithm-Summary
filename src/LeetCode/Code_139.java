@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.*;
 
 /**
@@ -25,12 +27,30 @@ import java.util.*;
  * 输入: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
  * 输出: false
  * <p>
-
  * @Author: Admin
  **/
 
-public class Test80 {
+public class Code_139 {
     //    广度优先算法 也就是从第一个截取字符串 ，然后对应的变换起始索引
+
+    /**
+     * @param s
+     * @param wordDict
+     * @Author: Admin
+     * @Description: 另一个方法是使用宽度优先搜索。将字符串可视化成一棵树，
+     * 每一个节点是用 end 为结尾的前缀字符串。当两个节点之间的所有节点都对应了字典中一个有效字符串时，
+     * 两个节点可以被连接。
+     *
+     * 为了形成这样的一棵树，我们从给定字符串的第一个字符开始（比方说 s ），
+     * 将它作为树的根部，开始找所有可行的以该字符为首字符的可行子串。进一步的，
+     * 将每一个子字符串的结束字符的下标（比方说 i）放在队列的尾部供宽搜后续使用。
+     *
+     * 每次我们从队列最前面弹出一个元素，并考虑字符串 s(i+1,end) 作为原始字符串，
+     * 并将当前节点作为树的根。这个过程会一直重复，直到队列中没有元素。
+     * 如果字符串最后的元素可以作为树的一个节点，
+     * 这意味着初始字符串可以被拆分成多个给定字典中的子字符串。
+     * @return: boolean
+     */
     public static boolean wordBreak1(String s, List<String> wordDict) {
         Set<String> wordDictSet = new HashSet(wordDict);
         Queue<Integer> queue = new LinkedList<>();
@@ -52,6 +72,7 @@ public class Test80 {
         }
         return false;
     }
+
     //    //动态规划 几乎和上面同样的思路
     public static boolean wordBreak(String s, List<String> wordDict) {
         Set<String> wordDictSet = new HashSet(wordDict);

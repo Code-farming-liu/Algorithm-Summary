@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.LinkedList;
 
 /**
@@ -11,7 +13,8 @@ import java.util.LinkedList;
  * Node *right;
  * Node *next;
  * }
- * 填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
+ * 填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，
+ * 则将 next 指针设置为 NULL。
  * <p>
  * 初始状态下，所有 next 指针都被设置为 NULL。
  * <p>
@@ -30,8 +33,15 @@ import java.util.LinkedList;
  * @Author: Admin
  **/
 
-public class Test75 {
+public class Code_116 {
     //效率极低的层次遍历BFS
+
+    /**
+     * @param root
+     * @Author: Admin
+     * @Description: 我们可以层序遍历这个二叉树，然后将同一层的元素进行串联
+     * @return: Node
+     */
     public Node connect1(Node root) {
         if (root == null) {
             return null;
@@ -60,6 +70,14 @@ public class Test75 {
         return root;
     }
 
+    /**
+     * @param root
+     * @Author: Admin
+     * @Description: 我们可以迭代 我们要想串联下一层的节点，
+     * 那么可以依赖上一层节点的串联，如果上一层串联完毕，
+     * 那么 上一层的 右子节点的next 就是 右子树的左子节点
+     * @return: Node
+     */
     public Node connect(Node root) {
         if (root == null) {
             return null;
@@ -85,6 +103,7 @@ public class Test75 {
         }
         return root;
     }
+
     //递归 dfs
     //我们以当前节root点为起始，左右节点不断的深入下面，left节点不断往右走，
     // right节点不断往左走，当这两个节点走到底后，整个纵深这段就完成了串联。

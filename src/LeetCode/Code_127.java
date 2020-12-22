@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.HashSet;
 import java.util.List;
 
@@ -41,9 +43,22 @@ import java.util.List;
  * @Author: Admin
  **/
 
-public class Test77 {
+public class Code_127 {
+    /**
+     * @param beginWord
+     * @param endWord
+     * @param wordList
+     * @Author: Admin
+     * @Description: 思路描述：
+     * 使用双端队列，然后将字符串转换为char数组，一个临时变量保存当前的字符，
+     * 将字符转换为单词判断字典中是不是包含该单词，如果包含该单词并且最后一个也是该单词证明找到了，
+     * 否则将单词加入到next；
+     * 将临时变量赋值给char数组，
+     * 如果开始的单词为null 则直接返回0，
+     * 否则循环此过程
+     * @return: int
+     */
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-
         HashSet<String> start = new HashSet<>(beginWord.length());
         start.add(beginWord);
         HashSet<String> end = new HashSet<>(endWord.length());

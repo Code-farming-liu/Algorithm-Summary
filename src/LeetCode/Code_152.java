@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.Arrays;
 
 /**
@@ -19,37 +21,49 @@ import java.util.Arrays;
  * @Author: Admin
  **/
 
-public class Test84 {
+public class Code_152 {
+    /**
+     * @param nums
+     * @Author: Admin
+     * @Description: 思路描述
+     * 遍历数组时计算当前最大值，不断更新
+     * 令imax为当前最大值，则当前最大值为 imax = max(imax * nums[i], nums[i])
+     * 由于存在负数，那么会导致最大的变最小的，最小的变最大的。
+     * 因此还需要维护当前最小值imin，imin = min(imin * nums[i], nums[i])
+     * 当负数出现时则imax与imin进行交换再进行下一步计算
+     * @return: int
+     */
     public static int maxProduct1(int[] nums) {
         int[] num = new int[nums.length];
-        System.arraycopy(nums,0,num,0,nums.length);
+        System.arraycopy(nums, 0, num, 0, nums.length);
         Arrays.sort(num);
         int result = 0;
-        if(nums.length == 1){
+        if (nums.length == 1) {
             return nums[0];
         }
-        if(nums.length == 2){
-            result = Math.max(nums[0],nums[1]);
-            result = Math.max(result,(nums[0] * nums[1]));
+        if (nums.length == 2) {
+            result = Math.max(nums[0], nums[1]);
+            result = Math.max(result, (nums[0] * nums[1]));
             return result;
         }
         int a = 0;
         result = nums[0];
-        for (int i = 0; i < nums.length ; i++) {
+        for (int i = 0; i < nums.length; i++) {
             a = i + 1;
             int b = nums[i];
-            while(a < nums.length ) {
+            while (a < nums.length) {
                 b *= nums[a];
                 result = Math.max(b, result);
                 a++;
             }
         }
-        for(int i = 1; i < nums.length;i++){
-            result = Math.max(result,(nums[i] * nums[i - 1]));
+        for (int i = 1; i < nums.length; i++) {
+            result = Math.max(result, (nums[i] * nums[i - 1]));
         }
-        result = Math.max(result,num[num.length - 1]);
+        result = Math.max(result, num[num.length - 1]);
         return result;
     }
+
     // 遍历数组时计算当前最大值，不断更新
     // 令imax为当前最大值，则当前最大值为 imax = max(imax * nums[i], nums[i])
     // 由于存在负数，那么会导致最大的变最小的，最小的变最大的。

@@ -1,3 +1,5 @@
+package LeetCode;
+
 /**
  * @ClassName: Test82
  * Description:排序链表
@@ -15,8 +17,16 @@
  * @Author: Admin
  **/
 
-public class Test82 {
-    public ListNode sortList (ListNode head){
+public class Code_148 {
+    /**
+     * @param head
+     * @Author: Admin
+     * @Description: 思路描述
+     * 我们采用归并排序的方法，先用快慢指针查找中点，然后从中点分割，
+     * 在设置一个新的链表进行合并。
+     * @return: ListNode
+     */
+    public ListNode sortList(ListNode head) {
         //说明遍历结束
         if (head == null || head.next == null) {
             return head;

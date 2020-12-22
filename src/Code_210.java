@@ -33,7 +33,7 @@ import java.util.Stack;
  * @Author: Admin
  **/
 
-public class Test91 {
+public class Code_210 {
     //拓扑排序
     /**
      * 1、在开始排序前，扫描对应的存储空间（使用邻接表），将入度为 0 的结点放入队列。

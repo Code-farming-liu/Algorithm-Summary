@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +26,19 @@ import java.util.Map;
  * @Author: Admin
  **/
 
-public class Test86 {
+public class Code_166 {
+    /**
+     * @param numerator
+     * @param denominator
+     * @Author: Admin
+     * @Description: 思路分析：
+     *
+     * 需要用一个哈希表记录余数出现在小数部分的位置，
+     * 当你发现已经出现的余数，就可以将重复出现的小数部分用括号括起来。
+     *
+     * 再出发过程中余数可能为 0，意味着不会出现循环小数，立刻停止程序。
+     * @return: java.lang.String
+     */
     public String fractionToDecimal(int numerator, int denominator) {
         if (numerator == 0) {
             return "0";

@@ -1,30 +1,39 @@
+package LeetCode;
+
 import java.util.*;
 
 /**
  * @ClassName: Test61
  * @Description: 字母异位词分组
  * 给定一个字符串数组，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。
- *
+ * <p>
  * 示例:
- *
+ * <p>
  * 输入: ["eat", "tea", "tan", "ate", "nat", "bat"]
  * 输出:
  * [
- *   ["ate","eat","tea"],
- *   ["nat","tan"],
- *   ["bat"]
+ * ["ate","eat","tea"],
+ * ["nat","tan"],
+ * ["bat"]
  * ]
  * 说明：
- *
+ * <p>
  * 所有输入均为小写字母。
  * 不考虑答案输出的顺序。
- *
  * @Author: Admin
- * @Date 2020/11/12 21:34
  **/
 
-public class Test61 {
-
+public class Code_49 {
+    /**
+     * @param strs
+     * @Author: Admin
+     * @Description: 思路描述：
+     * 既然是字母异位词，
+     * 那么他们排序后的字符串肯定是相同的
+     * 我们用这个 作为key List集合作为value，我们存在 就将当前的字符串
+     * 加入到集合之中，不存在则创建一个集合
+     * @return: java.util.List<java.util.List < java.lang.String>>
+     */
     public static List<List<String>> groupAnagrams(String[] strs) {
         //如果为数组为null 返回一个空的集合
         if (strs.length == 0) {

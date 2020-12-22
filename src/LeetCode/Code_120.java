@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.List;
 
 /**
@@ -21,8 +23,16 @@ import java.util.List;
  * @Author: Admin
  **/
 
-public class Test76 {
+public class Code_120 {
     //递归遍历(超时)
+
+    /**
+     * @param triangle
+     * @Author: Admin
+     * @Description: 还可以使用递归遍历：
+     * 递归方程： f(i,j)=min(f(i+1,j),f(i+1,j+1))+triangle[i] [j]
+     * @return: int
+     */
     public int minimumTotal3(List<List<Integer>> triangle) {
         return dfs1(triangle, 0, 0);
     }
@@ -31,11 +41,20 @@ public class Test76 {
         if (i == triangle.size()) {
             return 0;
         }
-        return Math.min(dfs(triangle, i + 1, j), dfs(triangle, i + 1, j + 1)) + triangle.get(i).get(j);
+        return Math.min(dfs(triangle, i + 1, j),
+                dfs(triangle, i + 1, j + 1)) + triangle.get(i).get(j);
     }
 
+    /**
+     * @param triangle
+     * @Author: Admin
+     * @Description: 还可以使用递归遍历：
+     * 递归方程： f(i,j)=min(f(i+1,j),f(i+1,j+1))+triangle[i] [j]
+     * @return: int
+     */
     //递归 + 记忆化
     Integer[][] memo;
+
     public int minimumTotal2(List<List<Integer>> triangle) {
         memo = new Integer[triangle.size()][triangle.size()];
         return dfs(triangle, 0, 0);
@@ -49,10 +68,21 @@ public class Test76 {
             return memo[i][j];
         }
 
-        return memo[i][j] = Math.min(dfs(triangle, i + 1, j), dfs(triangle, i + 1, j + 1)) + triangle.get(i).get(j);
+        return memo[i][j] = Math.min(dfs(triangle, i + 1, j),
+                dfs(triangle, i + 1, j + 1)) + triangle.get(i).get(j);
     }
 
     //动态规划 反向dp
+
+    /**
+     * @param triangle
+     * @Author: Admin
+     * @Description: 思路描述：
+     * 我们首先可以想到的就是 动态规划 状态转移方程 很容易确定出来：
+     * 但是这里我们无法确定对应的位置 因此我们从后往前推 反向动态规划
+     * dp[i][j]=min(dp[i+1][j],dp[i+1][j+1])+triangle[i][j]
+     * @return: int
+     */
     public int minimumTotal1(List<List<Integer>> triangle) {
         int n = triangle.size();
         int[][] dp = new int[n + 1][n + 1];
@@ -65,6 +95,15 @@ public class Test76 {
         return dp[0][0];
     }
 
+    /**
+     * @param triangle
+     * @Author: Admin
+     * @Description: 在上述代码中，我们定义了一个 NN 行 NN 列 的 dp 数组（NN 是三角形的行数）。
+     * 但是在实际递推中我们发现，计算 dp[i][j]只用到了下一行的 dp[i + 1][j] 和 dp[i+1][j+1]。
+     * 因此 dp 数组不需要定义 N 行，只要定义 1 行就阔以啦。
+     * 所以我们稍微修改一下上述代码，将 i 所在的维度去掉（如下）
+     * @return: int
+     */
     public int minimumTotal(List<List<Integer>> triangle) {
         int n = triangle.size();
         int[] dp = new int[n + 1];

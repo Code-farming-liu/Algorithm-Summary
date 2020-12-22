@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.Stack;
 
 /**
@@ -37,108 +39,17 @@ import java.util.Stack;
  * @Author: Admin
  **/
 
-public class Test83 {
-    //中缀表达式的计算
-    public int evalRPN(String[] tokens) {
-        String str = "";
-        for (String token : tokens) {
-            str += token;
-        }
-        Stack<Integer> numStack = new Stack<>();
-        Stack<Character> operStack = new Stack<>();
-        int index = 0;
-        int num1 = 0;
-        int num2 = 0;
-        int oper = 0;
-        int res = 0;
-        char ch = ' ';
-        String keepNum = "";
-        while (true) {
-            ch = str.substring(index, index + 1).charAt(0);
-            if (isOper(ch)) {
-                if (!operStack.isEmpty()) {
-                    if (priority(ch) <= priority(operStack.peek())) {
-                        num1 = numStack.pop();
-                        num2 = numStack.pop();
-                        oper = operStack.pop();
-                        res = cal(num1, num2, oper);
+public class Code_150 {
 
-                        numStack.push(res);
-                        operStack.push(ch);
-                    } else {
-                        operStack.push(ch);
-                    }
-                } else {
-                    operStack.push(ch);
-                }
-            } else {
-                keepNum += ch;
-                if (index == str.length()) {
-                    numStack.push(Integer.parseInt(keepNum));
-                } else {
-                    if (isOper(str.substring(index + 1, index + 2).charAt(0))) {
-                        numStack.push(Integer.parseInt(keepNum));
-                        keepNum = "";
-                    }
-                }
-            }
-            index++;
-            if (index >= str.length()) {
-                break;
-            }
-        }
-        while (true) {
-            if (operStack.isEmpty()) {
-                break;
-            }
-            num1 = numStack.pop();
-            num2 = numStack.pop();
-            oper = operStack.pop();
-            res = cal(num1, num2, oper);
-            numStack.push(res);
-        }
-        return res;
-    }
-
-    //判断是否是符号
-    public boolean isOper(char val) {
-        return val == '+' || val == '-' || val == '/' || val == '*';
-    }
-
-    //根据符号如何计算
-    public int cal(int num1, int num2, int oper) {
-        int res = 0;
-        switch (oper) {
-            case '+':
-                res = num1 + num2;
-                break;
-            case '-':
-                res = num2 - num1; //由于是栈 栈底 - 栈顶
-                break;
-            case '*':
-                res = num1 * num2;
-                break;
-            case '/':
-                res = num2 / num1;//由于是栈 栈底 / 栈顶
-                break;
-            default:
-                break;
-        }
-        return res;
-    }
-
-    //确定运算符的优先级
-    public int priority(int oper) {
-        if (oper == '*' || oper == '-') {
-            return 1;
-        } else if (oper == '+' || oper == '-') {
-            return 0;
-        } else {
-            return -1;
-        }
-
-    }
     //利用栈 遇到数字直接入栈， 否则 弹出两个数字 进行运算
+
+    /**
+     * @param tokens
+     * @Author: Admin
+     * @Description: 直接使用栈来进行求值，判断 如果是数字直接入栈，是符号
+     * 则弹出两个数字进行求解 将结果入栈，到了最后 栈中只有一个结果那么这个结果就是 最终的结果
+     * @return: int
+     */
     public int evalRPN1(String[] tokens) {
         Stack<String> stack = new Stack<>();
         for (String token : tokens) {
@@ -167,6 +78,14 @@ public class Test83 {
         return Integer.parseInt(stack.pop());
     }
 
+    /**
+     * @param tokens
+     * @Author: Admin
+     * @Description:
+     *
+     * 同样的思路 然后用纯数组方式实现（推荐）
+     * @return: int
+     */
     public static int evalRPN4(String[] tokens) {
         int[] numStack = new int[tokens.length / 2 + 1];
         int index = 0;
@@ -193,6 +112,7 @@ public class Test83 {
         }
         return numStack[0];
     }
+
     // 栈实现   8 ms	36.7 MB
     public static int evalRPN2(String[] tokens) {
         Stack<Integer> numStack = new Stack<>();

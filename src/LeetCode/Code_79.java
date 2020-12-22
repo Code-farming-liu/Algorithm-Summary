@@ -1,28 +1,40 @@
+package LeetCode;
+
 /**
  * @ClassName: Test69
  * @Description: 单词搜索
  * 给定一个二维网格和一个单词，找出该单词是否存在于网格中。
- *
+ * <p>
  * 单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例:
- *
+ * <p>
  * board =
  * [
- *   ['A','B','C','E'],
- *   ['S','F','C','S'],
- *   ['A','D','E','E']
+ * ['A','B','C','E'],
+ * ['S','F','C','S'],
+ * ['A','D','E','E']
  * ]
- *
+ * <p>
  * 给定 word = "ABCCED", 返回 true
  * 给定 word = "SEE", 返回 true
  * 给定 word = "ABCB", 返回 false
  * @Author: Admin
  **/
 
-public class Test69 {
+public class Code_79 {
+    /**
+     * @Author: Admin
+     * @Description: 思路描述：
+     * 我们可以采用DFS方法，根据上右下左的策略来遍历该点，
+     * 如果下一个字符等于的话则继续便利
+     * 不等于则开始回溯，我们将遍历过得标记为true，
+     * 最后遍历结束之后，我们将所有的点标记为false，从头再次开始遍历。
+     * @param null
+     * @return: null
+     */
     private boolean[][] marked;
 
     //        x-1,y
@@ -76,6 +88,7 @@ public class Test69 {
         }
         return false;
     }
+
     //判断是否越界
     private boolean inArea(int x, int y) {
         return x >= 0 && x < m && y >= 0 && y < n;

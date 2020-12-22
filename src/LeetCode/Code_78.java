@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +28,7 @@ import java.util.List;
  * @Date 2020/11/15 11:44
  **/
 
-public class Test68 {
+public class Code_78 {
     //集合的每个元素，都有可以选或不选，用二进制和位运算，可以很好的表示。 ?????
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();

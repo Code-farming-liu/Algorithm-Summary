@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,7 +29,14 @@ import java.util.List;
  * @Author: Admin
  **/
 
-public class Test73 {
+public class Code_102 {
+    /**
+     * @param root
+     * @Author: Admin
+     * @Description: 思路描述：
+     * 直接使用层序遍历即可
+     * @return: java.util.List<java.util.List < java.lang.Integer>>
+     */
     public List<List<Integer>> levelOrder1(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null) {

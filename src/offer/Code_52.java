@@ -1,7 +1,5 @@
 package offer;
 
-import offer.ListNode;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +11,15 @@ import java.util.Set;
  **/
 
 public class Code_52 {
+    /**
+     * @param pHead
+     * @Author: Admin
+     * @Description: 思路描述：
+     * 我们使用 set 集合辅助遍历 然后判断是否存在该节点，
+     * 存在则直接返回
+     * 否则 添加进去set集合
+     * @return: offer.ListNode
+     */
     public ListNode EntryNodeOfLoop(ListNode pHead) {
         if (pHead == null) {
             return pHead;

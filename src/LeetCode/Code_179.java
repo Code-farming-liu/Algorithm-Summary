@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -18,7 +20,15 @@ import java.util.Comparator;
  * @Author: Admin
  **/
 
-public class Test87 {
+public class Code_179 {
+    /**
+     * @param nums
+     * @Author: Admin
+     * @Description: 我们可以将对应的数字交换拼接，看是不是组成最大的数，
+     * 我们只要保证每一步都是最大的数，那么结果一定是最大的数，我们可以使使用JDK提供的比较器，
+     * 实现字符串的字典比较。
+     * @return: java.lang.String
+     */
     public String largestNumber(int[] nums) {
         Integer[] n = new Integer[nums.length];
         for (int i = 0; i < nums.length; i++) {

@@ -27,7 +27,6 @@ import java.util.List;
  **/
 
 public class Code_15 {
-
     /**
      * @param nums
      * @Author: Admin

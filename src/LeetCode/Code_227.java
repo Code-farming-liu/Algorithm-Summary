@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.Stack;
 
 /**
@@ -23,7 +25,19 @@ import java.util.Stack;
  * @Author: Admin
  **/
 
-public class Test93 {
+public class Code_227 {
+    /**
+     * @param s
+     * @Author: Admin
+     * @Description: 思路描述
+     * 思路描述：
+     *
+     * 我们创建两个栈，一个符号栈，一个数字栈，当碰到数字时直接压入数栈，
+     * 遇到符号 判断 符号的优先级，如果优先级大于当前符号栈中的符号，
+     * 那么我们直接在数栈中弹出两个数进行运算，将结果保存在数栈中，
+     * 然后我们最后数栈中就只剩一个结果，那就是我们最后计算的结果。
+     * @return: int
+     */
     public int calculate(String s) {
         s.trim();
         Stack<Character> operStack = new Stack<>();

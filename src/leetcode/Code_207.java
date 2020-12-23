@@ -32,7 +32,7 @@ import java.util.*;
  **/
 
 public class Code_207 {
-    public boolean canFinish1(int numCourses, int[][] prerequisites) {
+    public boolean canFinish1(int numCourses, int[][] prerequisites) { 
         if (numCourses <= 0) {
             return false;
         }

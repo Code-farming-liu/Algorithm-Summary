@@ -63,7 +63,7 @@ public class Code_73 {
             }
         }
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
+            for (int j = 0; j < matrix[0].length; j++) { 
                 if (rows.contains(i) || columns.contains(j)) {
                     matrix[i][j] = 0;
                 }

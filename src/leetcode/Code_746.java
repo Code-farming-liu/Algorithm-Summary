@@ -32,7 +32,7 @@ public class Code_746 {
 
     /**
      * @Author: Admin
-     * @Description: 思路描述
+     * @Description: 思路描述 
      * 踏上第i级台阶有两种方法：
      *
      * 先踏上第i-2级台阶（最小总花费dp[i-2]），再直接迈两步踏上第i级台阶（花费cost[i]），

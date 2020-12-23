@@ -33,6 +33,7 @@ public class Code_11 {
         }
         return result;
     }
+    
 
     //暴力破解法
     public int maxArea2(int[] height) {

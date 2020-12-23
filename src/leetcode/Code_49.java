@@ -30,7 +30,7 @@ public class Code_49 {
      * @Description: 思路描述：
      * 既然是字母异位词，
      * 那么他们排序后的字符串肯定是相同的
-     * 我们用这个 作为key List集合作为value，我们存在 就将当前的字符串
+     * 我们用这个 作为key List集合作为value，我们存在 就将当前的字符串 
      * 加入到集合之中，不存在则创建一个集合
      * @return: java.util.List<java.util.List < java.lang.String>>
      */

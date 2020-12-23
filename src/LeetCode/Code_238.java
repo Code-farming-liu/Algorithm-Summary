@@ -1,3 +1,5 @@
+package LeetCode;
+
 /**
  * @ClassName: Test96
  * Description: 除自身以外数组的乘积
@@ -19,7 +21,19 @@
  * @Author: Admin
  **/
 
-public class Test96 {
+public class Code_238 {
+    /**
+     * @param nums
+     * @Author: Admin
+     * @Description: 思路描述：
+     *
+     * 我们使用左右两个数组的方式进行辅助，
+     * 左边数组，为 当前元素左边所有元素的乘积，
+     * 右边数组为当前元素右边所有元素的乘积，
+     * 最后的结果即为 左边与右边的乘积，
+     * 注意 第一个数的左边没有元素设置为1，最后一个数右边没有元素设置为1。
+     * @return: int[]
+     */
     public int[] productExceptSelf1(int[] nums) {
         //数组的长度
         int length = nums.length;

@@ -80,7 +80,7 @@ public class Code_56 {
             }
         }
         int[][] res = new int[length][];
-        System.arraycopy(merge, 0, res, 0, length);
+        System.arraycopy(merge, 0, res, 0, length); 
         return res;
     }
 

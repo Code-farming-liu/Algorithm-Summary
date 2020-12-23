@@ -1,6 +1,8 @@
+package LeetCode;
+
 /**
  * @ClassName: Test99
- * Description: 最长上升子序列
+ * Description: 最长递增子序列
  * 给定一个无序的整数数组，找到其中最长上升子序列的长度。
  * <p>
  * 示例:
@@ -11,7 +13,13 @@
  * @Author: Admin
  **/
 
-public class Test99 {
+public class Code_300 {
+    /**
+     * @param nums
+     * @Author: Admin
+     * @Description: 暴力破解（不做过多的叙述）
+     * @return: int
+     */
     public static int lengthOfLIS1(int[] nums) {
         if (nums.length == 0) {
             return 0;

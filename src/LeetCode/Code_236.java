@@ -1,3 +1,5 @@
+package LeetCode;
+
 /**
  * @ClassName: Test95
  * Description: 二叉树最近的公共祖先
@@ -31,7 +33,20 @@
  * @Author: Admin
  **/
 
-public class Test95 {
+public class Code_236 {
+    /**
+     * @param root
+     * @param p
+     * @param q
+     * @Author: Admin
+     * @Description: 思路描述：
+     * 从根节点开始遍历树。
+     * 如果当前节点本身是 p 或 q 中的一个，我们会将变量 mid 标记为 true，并继续搜索左右分支中的另一个节点。
+     * 如果左分支或右分支中的任何一个返回 true，则表示在下面找到了两个节点中的一个。
+     * 如果在遍历的任何点上，left、right 或者 mid 三个标记中的任意两个变为 true，
+     * 这意味着我们找到了节点 p 和 q 的最近公共祖先。
+     * @return: LeetCode.TreeNode
+     */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // 如果根节点为null
         if (root == null) {

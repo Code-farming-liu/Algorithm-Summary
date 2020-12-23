@@ -77,5 +77,5 @@ public class Code_98 {
             return isValidBST(root.right);
         }
         return false;
-    }
+    } 
 }

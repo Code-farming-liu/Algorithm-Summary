@@ -30,7 +30,7 @@ public class Code_75 {
      * 排序 快排
      * @return: void
      */
-    public void sortColors1(int[] nums) {
+    public void sortColors1(int[] nums) { 
         quickSort(nums, 0, nums.length - 1);
     }
 

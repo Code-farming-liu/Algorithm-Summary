@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.*;
 
 /**
@@ -21,7 +23,8 @@ import java.util.*;
  * @Author: Admin
  **/
 
-public class Test94 {
+public class Code_230 {
+
     public int kthSmallest1(TreeNode root, int k) {
         if (root == null) {
             return 0;
@@ -49,6 +52,17 @@ public class Test94 {
         Arrays.sort(res);
         return res[k - 1];
     }
+
+    /**
+     * @param root
+     * @param arr
+     * @Author: Admin
+     * @Description: 思路描述：
+     * 中序遍历二叉搜索树，就是一个有序的数组，直接返回对应的结果。
+     *
+     * 也可以在遍历过程中直接返回对应的结果
+     * @return: java.util.ArrayList<java.lang.Integer>
+     */
     //中序遍历二叉搜索树
     public ArrayList<Integer> inorder(TreeNode root, ArrayList<Integer> arr) {
         if (root == null) {
@@ -59,6 +73,7 @@ public class Test94 {
         inorder(root.right, arr);
         return arr;
     }
+
     //返回结果
     public int kthSmallest(TreeNode root, int k) {
         ArrayList<Integer> nums = inorder(root, new ArrayList<Integer>());
@@ -68,7 +83,7 @@ public class Test94 {
                 return 0;
             }
         });
-        return  k > nums.size() ? 0 : nums.get(k - 1);
+        return k > nums.size() ? 0 : nums.get(k - 1);
 //        return nums.get(k - 1);
     }
 
@@ -89,18 +104,19 @@ public class Test94 {
 
 
     int index = 0;
-    TreeNode KthNode(TreeNode pRoot, int k){
-        if(pRoot != null){ //中序遍历寻找第k个
-            TreeNode node = KthNode(pRoot.left,k);
-            if(node != null) {
+
+    TreeNode KthNode(TreeNode pRoot, int k) {
+        if (pRoot != null) { //中序遍历寻找第k个
+            TreeNode node = KthNode(pRoot.left, k);
+            if (node != null) {
                 return node;
             }
             index++;
-            if(index == k) {
+            if (index == k) {
                 return pRoot;
             }
-            node = KthNode(pRoot.right,k);
-            if(node != null) {
+            node = KthNode(pRoot.right, k);
+            if (node != null) {
                 return node;
             }
         }

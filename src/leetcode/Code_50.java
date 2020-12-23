@@ -58,7 +58,7 @@ public class Code_50 {
      * 假定我们已经得到 x ^ n / 2次我们将它定义为 A
      * 那么我们可以利用n的奇偶性来判断 x ^ n的值
      * 当 n是偶数时 x^ n = x^ n/ 2 * x^ n/2 = A * A
-     * 当n是奇数时 x ^ n + 1 = x^ n/ 2 * x^ n/2 * x = A * A * x
+     * 当n是奇数时 x ^ n + 1 = x^ n/ 2 * x^ n/2 * x = A * A * x 
      * 总结来说：
      * A = x ^ n/2 n为偶数 x^n = A * A n为奇数 x^n = A * A * x
      * @return: double

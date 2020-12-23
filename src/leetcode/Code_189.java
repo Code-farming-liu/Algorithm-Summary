@@ -83,7 +83,7 @@ public class Code_189 {
             int temp = nums[start];
             nums[start++] = nums[end];
             nums[end--] = temp;
-//            start++;
+//            start++; 
 //            end--;
         }
     }

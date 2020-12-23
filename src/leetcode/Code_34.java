@@ -32,7 +32,7 @@ public class Code_34 {
     public static int[] searchRange1(int[] nums, int target) {
         int[] res = {-1, -1};
         if (nums.length == 0) {
-            return res;
+            return res; 
         }
         if (nums.length == 1) {
             return nums[0] == target ? new int[]{0, 0} : res;

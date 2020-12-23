@@ -74,7 +74,7 @@ public class Code_230 {
         return arr;
     }
 
-    //返回结果
+    //返回结果 
     public int kthSmallest(TreeNode root, int k) {
         ArrayList<Integer> nums = inorder(root, new ArrayList<Integer>());
         Collections.sort(nums, new Comparator<Integer>() {

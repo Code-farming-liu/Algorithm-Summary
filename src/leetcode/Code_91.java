@@ -31,7 +31,7 @@ public class Code_91 {
         int cur = 0;
         if (s.charAt(len - 1) != '0') {
             cur = 1;
-        }
+        } 
         for (int i = len - 2; i >= 0; i--) {
             if (s.charAt(i) == '0') {
                 //end 前移

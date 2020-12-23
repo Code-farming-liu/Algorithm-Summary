@@ -70,4 +70,4 @@ public class Code_166 {
         }
         return fraction.toString();
     }
-}
+} 

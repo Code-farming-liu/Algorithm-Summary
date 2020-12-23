@@ -132,4 +132,4 @@ public class Code_19 {
         slow.next = slow.next.next;
         return pre.next;
     }
-}
+} 

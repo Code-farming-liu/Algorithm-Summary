@@ -31,7 +31,7 @@ import java.util.List;
 public class Code_78 {
     //集合的每个元素，都有可以选或不选，用二进制和位运算，可以很好的表示。 ?????
     public static List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<List<Integer>> res = new ArrayList<List<Integer>>(); 
         //1<<nums.length 等价于 2^nums.length,对于n个数字的数组，共2^n个子集；
         for (int i = 0; i < (1 << nums.length); i++) {
             List<Integer> sub = new ArrayList<Integer>();

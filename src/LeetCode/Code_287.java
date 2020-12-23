@@ -1,3 +1,5 @@
+package LeetCode;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -5,7 +7,8 @@ import java.util.Set;
 /**
  * @ClassName: Test98
  * Description: 寻找重复数
- * 给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，找出这个重复的数。
+ * 给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），
+ * 可知至少存在一个重复的整数。假设只有一个重复的整数，找出这个重复的数。
  * <p>
  * 示例 1:
  * <p>
@@ -24,7 +27,14 @@ import java.util.Set;
  * @Author: Admin
  **/
 
-public class Test98 {
+public class Code_287 {
+
+    /**
+     * @param nums
+     * @Author: Admin
+     * @Description: 对数组进行排序，然后遍历数组，判断 前后两个数是否相同。
+     * @return: int
+     */
     public int findDuplicate2(int[] nums) {
         Arrays.sort(nums);
         for (int i = 1; i < nums.length; i++) {
@@ -35,6 +45,12 @@ public class Test98 {
         return -1;
     }
 
+    /**
+     * @param nums
+     * @Author: Admin
+     * @Description: 利用set集合辅助，如果不存在加入集合，存在则直接返回该数。
+     * @return: int
+     */
     public int findDuplicate3(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int num : nums) {
@@ -158,7 +174,7 @@ public class Test98 {
         return res;
     }
 
-    //
+    // ????
     public int findDuplicate1(int[] nums) {
         int slow = nums[0];
         int fast = nums[nums[0]];

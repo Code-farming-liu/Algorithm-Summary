@@ -85,21 +85,6 @@ public class Code_387 {
         return -1;
     }
 
-    public static int firstUniqChar3(String s) {
-        int start = 0;
-        int end = s.length() - 1;
-        while (start <= end) {
-            if (start == end) {
-                return start;
-            } else if (s.charAt(start) == s.charAt(end)) {
-                start++;
-                end--;
-            } else {
-                end--;
-            }
-        }
-        return -1;
-    }
 
     /**
      * @param s
@@ -139,7 +124,7 @@ public class Code_387 {
         return index;
     }
 
-    public static void main(String[] args) {
-        firstUniqChar3("leetcode");
-    }
+//    public static void main(String[] args) {
+//        firstUniqChar3("leetcode");
+//    }
 }

@@ -32,7 +32,7 @@ import java.util.Stack;
  * 输入的先决条件是由边缘列表表示的图形，而不是邻接矩阵。详情请参见图的表示法。
  * 你可以假定输入的先决条件中没有重复的边。
  * <p>
- * @Author: Admin
+ * @Author: Admin 
  **/
 
 public class Code_210 {

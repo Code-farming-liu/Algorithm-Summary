@@ -47,27 +47,27 @@ public class Code_148 {
         //向右递归分解
         ListNode right = sortList(tmp);
         //创建一个新的链表 指向新链表的头部
-        ListNode h = new ListNode(0);
+        ListNode res = new ListNode(0);
         //设置头指针 用于保留新链表的头位置
-        ListNode res = h;
+        ListNode cur = res;
         //当左边 和 右边有值 进行合并
         while (left != null && right != null) {
             //左边的值小于右边 将左边的值加入到新的链表的下一个
             //对应的 left 向后移 进行遍历
             if (left.val < right.val) {
-                h.next = left;
+                cur.next = left;
                 left = left.next;
             } else {
                 //左边的值大于等于右边 将右边的值加入到新的链表的下一个
                 //对应的 right 向后移 进行遍历
-                h.next = right;
+                cur.next = right;
                 right = right.next;
             }
             //新链表 对应的指针向后移
-            h = h.next;
+            cur = cur.next;
         }
         //将左和右 剩余的 元素添加到 新链表中
-        h.next = left != null ? left : right;
+        cur.next = left != null ? left : right;
         return res.next;
     }
 }

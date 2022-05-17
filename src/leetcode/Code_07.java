@@ -9,26 +9,27 @@ package leetcode;
 
 public class Code_07 {
     public static int reverse(int x) {
-        String str = x + "";
-        boolean flag = true;
         if (x == 0) {
             return 0;
         }
-        if (x < 0) {
-            flag = false;
-        }
-        StringBuilder sb = new StringBuilder();
-//        sb.append(flag ? "" : "-");
+        boolean flag = x > 0;
+        String str = x + "";
+        int res = 0;
         int index = str.length() - 1;
         char[] chars = str.toCharArray();
+        // 去除后置0
         while (index >= 0 && chars[index] == '0') {
             index--;
         }
+        // 倒序
         while (index >= 0 && chars[index] != '-') {
-            sb.append(chars[index]);
+            // 越界处理  res * 10 + chars[index] - '0' > Integer.MAX_VALUE 改为除法
+            if (res > (Integer.MAX_VALUE - (chars[index] - '0')) / 10) {
+                return 0;
+            }
+            res = res * 10 + chars[index] - '0';
             index--;
         }
-        int res = Integer.parseInt(sb.toString());
         return flag ? res : -res;
     }
 

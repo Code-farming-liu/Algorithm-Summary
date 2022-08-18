@@ -120,10 +120,9 @@ public class Code_93 {
     // 需要一个变量记录剩余多少段还没被分割
 
     /**
-     *
      * @param s
      * @param len
-     * @param begin 截取的开始下标
+     * @param begin   截取的开始下标
      * @param residue 剩余多少段
      * @param path
      * @param res
@@ -170,9 +169,65 @@ public class Code_93 {
     }
 
 
+//    private  res;
+    public static List<String> restoreIpAddresses3(String s) {
+        List<String> res = new ArrayList<>();
+        if (s.length() < 4 || s.length() > 12) { //特判
+            return res;
+        }
+        backTracking(new StringBuilder(s), 0, 0, res);
+        return res;
+    }
+
+
+    private static void backTracking(StringBuilder s, int start, int pointNum, List<String> res) {
+        if (pointNum == 3) {
+            if (isValid(s, start, s.length() - 1)) {
+                res.add(s.toString());
+            }
+            return;
+        }
+
+        for (int i = start; i < s.length(); i++) {
+            if (isValid(s, start, i)) {
+                s = new StringBuilder(s.substring(0, i + 1)).append('.').append(s.substring(i + 1));
+                pointNum++;
+                backTracking(s, i + 2, pointNum, res); //加了一个'.'下个起始点变成了i + 2
+                pointNum--;
+                s = new StringBuilder(s.substring(0, i + 1)).append(s.substring(i + 2));
+            } else {
+                break;
+            }
+        }
+    }
+
+    public static boolean isValid(StringBuilder s, int start, int end) {
+        if (start > end) {
+            return false;
+        }
+        // 判断是否以0开头
+        if (s.charAt(start) == '0' && start != end) {
+            return false;
+        }
+        int n = 0;
+        for (int i = start; i <= end; i++) {
+            // 判断是否有负,是否两位数
+            if (s.charAt(i) > '9' || s.charAt(i) < '0') {
+                return false;
+            }
+            // 判断是否大于255
+            n = n * 10 + (s.charAt(i) - '0');
+            if (n > 255) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     public static void main(String[] args) {
         String str = "25525511135";
-        new Code_93().restoreIpAddresses(str);
+        new Code_93().restoreIpAddresses3(str);
     }
 
 }

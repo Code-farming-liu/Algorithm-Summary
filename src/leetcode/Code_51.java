@@ -42,7 +42,7 @@ public class Code_51 {
 
         // 检查45度角
         for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
-            if (chars[i][i] == 'Q') {
+            if (chars[i][j] == 'Q') {
                 return false;
             }
         }

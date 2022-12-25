@@ -47,7 +47,7 @@ public class Code_559 {
     }
 
 
-    public int maxDepth(Node root) {
+    public int maxDepth1(Node root) {
         if (root == null) {
             return 0;
         }
@@ -55,6 +55,19 @@ public class Code_559 {
         List<Node> children = root.children;
         for (Node child : children) {
             res = Math.max(res, maxDepth(child) + 1);
+        }
+        return res;
+    }
+
+
+    public int maxDepth(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int res = 0;
+        for (Node node : root.children) {
+            int depth = maxDepth(node);
+            res = Math.max(res, depth + 1);
         }
         return res;
     }

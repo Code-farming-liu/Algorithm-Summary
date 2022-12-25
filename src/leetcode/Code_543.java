@@ -54,4 +54,20 @@ public class Code_543 {
         res = Math.max(res, left + right + 1);
         return Math.max(left, right) + 1;
     }
+
+    int ans = 0;
+    public int diameterOfBinaryTree1(TreeNode root) {
+        dfs1(root);
+        return ans;
+    }
+
+    public int dfs1(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+        ans = Math.max(left + right, ans);
+        return Math.max(left, right) + 1;
+    }
 }

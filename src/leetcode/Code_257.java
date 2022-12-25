@@ -34,8 +34,18 @@ public class Code_257 {
         return res;
     }
 
-    public static void dfs(TreeNode root, List<String> res, String str) {
-
+    public static void dfs(TreeNode root, List<String> res, String sb) {
+        if (root == null) {
+            return;
+        }
+        sb += root.val;
+        sb += "->";
+        if (root.left == null && root.right == null) {
+            res.add(sb.substring(0, sb.length() - 2));
+            return;
+        }
+        dfs(root.left, res, sb);
+        dfs(root.right, res, sb);
     }
 
     public static void main(String[] args) {

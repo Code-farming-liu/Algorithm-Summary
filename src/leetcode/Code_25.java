@@ -105,5 +105,7 @@ public class Code_25 {
         node3.next = node4;
         node4.next = node5;
         node5.next = node6;
+        reverseKGroup(node1, 2);
     }
+
 }

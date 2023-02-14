@@ -61,4 +61,40 @@ public class Code_112 {
         boolean right = hasPathSum(root.right, targetSum);
         return left || right;
     }
+
+    public boolean hasPathSum3(TreeNode root, int targetSum) {
+        if (root == null) {
+            return false;
+        }
+        return hasPathSum2(root, targetSum - root.val);
+    }
+
+    public boolean hasPathSum2(TreeNode root, int targetSum) {
+        if (root == null) {
+            return false;
+        }
+        boolean isLeaf = root.left == null && root.right == null;
+        if (isLeaf && targetSum == 0) {
+            return true;
+        }
+        if (isLeaf) {
+            return false;
+        }
+        if (root.left != null) {
+            targetSum -= root.left.val;
+            if (hasPathSum2(root.left, targetSum)) {
+                return true;
+            }
+            targetSum += root.left.val;
+        }
+
+        if (root.right != null) {
+            targetSum -= root.right.val;
+            if (hasPathSum2(root.right, targetSum)) {
+                return true;
+            }
+            targetSum += root.right.val;
+        }
+        return false;
+    }
 }

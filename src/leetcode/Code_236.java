@@ -68,10 +68,6 @@ public class Code_236 {
             return left;
         }
         // 如果都不为null,那就是在两边,所以返回root即可
-        if (left != null && right != null) {
-            return root;
-        }
-        // 都为空,返回空
-        return null;
+        return root;
     }
 } 

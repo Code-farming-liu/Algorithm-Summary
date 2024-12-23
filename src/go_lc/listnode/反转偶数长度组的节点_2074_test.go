@@ -61,15 +61,15 @@ func reverseEvenLengthGroups(head *ListNode) *ListNode {
 
 	var reverse func(a, b *ListNode) *ListNode
 	reverse = func(st, ed *ListNode) *ListNode {
-		cur, p := st.Next, st
-		p.Next = ed
+		cur, pre := st.Next, st
+		pre.Next = ed // 断开第二个链接，保存后面的 next
 		for cur != ed {
 			next := cur.Next
-			cur.Next = p
-			p = cur
+			cur.Next = pre
+			pre = cur
 			cur = next
 		}
-		return p
+		return pre
 	}
 	h := &ListNode{Next: head}
 	c := h

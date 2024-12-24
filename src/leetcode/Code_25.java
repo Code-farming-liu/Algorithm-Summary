@@ -29,7 +29,7 @@ package leetcode;
  **/
 
 public class Code_25 {
-    public static ListNode reverseKGroup(ListNode head, int k) {
+    public static ListNode reverseKGroup1(ListNode head, int k) {
         // 空想的pre节点（接在头节点之前
         ListNode pre = new ListNode(Integer.MIN_VALUE);
         pre.next = head;
@@ -56,7 +56,7 @@ public class Code_25 {
             // 断开链表
             tail.next = null;
             // 反转链表（head，tail)
-            pre.next = reverse(start);
+            pre.next = reverse1(start);
             // 接上链表末尾,此时start为反转后链表末尾
             start.next = next;
             // 移动指针寻找下一段链表
@@ -73,7 +73,7 @@ public class Code_25 {
      * @param head 头节点
      * @return
      */
-    private static ListNode reverse(ListNode head) {
+    private static ListNode reverse1(ListNode head) {
         // pre是指向前一个节点的指针，初始头节点前面的null
         ListNode pre = null;
         // curr是当前节点
@@ -90,6 +90,45 @@ public class Code_25 {
         }
         // 最后pre会移动到最后，但此时由于链表反转pre正好是反转后的头
         return pre;
+    }
+
+
+
+    public static ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        ListNode curr = dummyHead;
+        while (curr.next != null) {
+            int j = 0;
+            ListNode pre = curr;
+            for (; j < k && curr.next != null; j++) {
+                curr = curr.next;
+            }
+            if ((j & k) == 0) {
+                ListNode next = pre.next;
+                pre.next = reverse(pre.next, curr.next);
+                curr = next;
+            }
+        }
+        return dummyHead.next;
+    }
+
+
+    public static ListNode reverse(ListNode st, ListNode ed) {
+        ListNode curr = st.next;
+        ListNode prev = st;
+        prev.next = ed;
+        while (curr != ed) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
     }
 
     // 链表的模板

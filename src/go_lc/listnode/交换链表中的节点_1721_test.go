@@ -34,50 +34,52 @@ import "testing"
 1 <= k <= n <= 105
 0 <= Node.val <= 100
 */
+
 func swapNodes(head *ListNode, k int) *ListNode {
-	//var reverse func(st, ed *ListNode) *ListNode
-	//reverse = func(st, ed *ListNode) *ListNode {
-	//	curr, prev := st.Next, st
-	//	prev.Next = ed
-	//	for curr != nil && curr != ed {
-	//		next := curr.Next
-	//		curr.Next = prev
-	//		prev = curr
-	//		curr = next
-	//	}
-	//	return prev
-	//}
+	dummyHead := &ListNode{Next: head}
+	pre1, pre2 := dummyHead, dummyHead
+	left, right := head, head
+	for i := 1; i < k; i++ {
+		pre1 = left
+		left = left.Next
+	}
 
-	curr1, curr2 := head, head
+	cur := left
+	temp := left.Next
+	for cur.Next != nil {
+		pre2 = right
+		right = right.Next
+		cur = cur.Next
+	}
 
-	var prev *ListNode
-	len := 0
-	for curr1 != nil {
-		len++
-		if len == k {
-			prev = curr1
+	if left == right {
+		return dummyHead.Next
+	}
+
+	if right == pre1 {
+		right.Next = temp
+		left.Next = right
+		pre2.Next = left
+	} else {
+		left.Next = right.Next
+		if pre2 == left {
+			right.Next = left
+		} else {
+			// 特殊情况，第k个节点在倒数第k个节点的左侧
+			pre2.Next = left
+			right.Next = pre2
 		}
-		curr1 = curr1.Next
-	}
-	index := len - k
-	for index > 0 {
-		curr2 = curr2.Next
-		index--
+		pre1.Next = right
 	}
 
-	if prev == nil || prev == curr2 {
-		return head
-	}
-
-	prev.Val, curr2.Val = curr2.Val, prev.Val
-	return head
+	return dummyHead.Next
 }
 
 func TestS(t *testing.T) {
 	head := &ListNode{Val: 1}
 	head.Next = &ListNode{Val: 2}
-	//head.Next.Next = &ListNode{Val: 3}
-	//head.Next.Next.Next = &ListNode{Val: 4}
-	//head.Next.Next.Next.Next = &ListNode{Val: 5}
-	println(swapNodes(head, 2))
+	head.Next.Next = &ListNode{Val: 3}
+	head.Next.Next.Next = &ListNode{Val: 4}
+	head.Next.Next.Next.Next = &ListNode{Val: 5}
+	println(swapNodes(head, 1))
 }

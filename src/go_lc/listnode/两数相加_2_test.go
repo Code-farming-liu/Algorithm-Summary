@@ -1,7 +1,5 @@
 package listnode
 
-import "testing"
-
 /**
 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
 
@@ -54,9 +52,4 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		l2 = l2.Next
 	}
 	return dummyHead.Next
-}
-
-func TestAAA(t *testing.T) {
-	createLinkedList([]int{2, 4, 3})
-	addTwoNumbers(createLinkedList([]int{2, 4, 3}), createLinkedList([]int{5, 6, 4}))
 }

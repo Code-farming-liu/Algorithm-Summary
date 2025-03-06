@@ -1,4 +1,4 @@
-package leetcode
+package 数组
 
 func pivotIndex1(nums []int) int {
 	left, right := 0, 0

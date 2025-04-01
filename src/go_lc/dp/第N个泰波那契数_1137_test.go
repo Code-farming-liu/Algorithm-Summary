@@ -1,4 +1,4 @@
-package 动态规划
+package dp
 
 /**
 泰波那契序列 Tn 定义如下：

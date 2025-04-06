@@ -67,6 +67,36 @@ func findMaxForm(strs []string, m int, n int) int {
 	return dp[len(strs)][m][n]
 }
 
+// 二维DP解法（空间优化）
+func findMaxForm(strs []string, m int, n int) int {
+	// 1. 确定dp定义
+	// dp[j][k] 表示使用最多 j 个 0 和 k 个 1 的情况下最多可以得到的字符串数量。
+
+	// 3. 初始化DP
+	dp := make([][]int, m+1)
+	for j := range dp {
+		dp[j] = make([]int, n+1)
+	}
+
+	// 4. 确定遍历顺序
+	for _, str := range strs {
+		zero := strings.Count(str, "0")
+		one := len(str) - zero
+
+		// 逆序遍历，避免重复计算
+		for j := m; j >= zero; j-- {
+			for k := n; k >= one; k-- {
+				// 2. 确定递推公式
+				// dp[j][k] = max(dp[j][k], dp[j-zero][k-one]+1)
+				dp[j][k] = max(dp[j][k], dp[j-zero][k-one]+1)
+			}
+		}
+	}
+
+	// 5. 返回结果
+	return dp[m][n]
+}
+
 func TestFindMaxForm(t *testing.T) {
 	strs := []string{"10", "0001", "111001", "1", "0"}
 	findMaxForm(strs, 5, 3)

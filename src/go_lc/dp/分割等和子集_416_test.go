@@ -42,3 +42,39 @@ func canPartition(nums []int) bool {
 	}
 	return dp[target] == target
 }
+
+func canPartition1(nums []int) bool {
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+
+	if sum%2 != 0 {
+		return false
+	}
+
+	target := sum / 2
+	dp := make([][]int, len(nums)+1)
+	for i := 0; i < len(dp); i++ {
+		dp[i] = make([]int, target+1)
+	}
+
+	// 初始化
+	for j := 0; j < target+1; j++ {
+		if j >= nums[0] {
+			dp[0][j] = nums[0]
+		}
+	}
+
+	for i := 1; i < len(nums); i++ {
+		for j := 0; j <= target; j++ {
+			if j >= nums[i] {
+				dp[i][j] = max(dp[i-1][j], dp[i-1][j-nums[i]]+nums[i])
+				continue
+			}
+
+			dp[i][j] = dp[i-1][j]
+		}
+	}
+	return dp[len(nums)-1][target] == target
+}

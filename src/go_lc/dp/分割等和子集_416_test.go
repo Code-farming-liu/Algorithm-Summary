@@ -59,22 +59,29 @@ func canPartition1(nums []int) bool {
 		dp[i] = make([]int, target+1)
 	}
 
-	// 初始化
+	// 初始化 dp[0][0] 为 0
+	dp[0][0] = 0
+
+	// 初始化 dp[i][0] 为 0
+	for i := 0; i < len(nums)+1; i++ {
+		dp[i][0] = 0
+	}
+
+	// 初始化 dp[0][j] 为 0
 	for j := 0; j < target+1; j++ {
-		if j >= nums[0] {
-			dp[0][j] = nums[0]
-		}
+		dp[0][j] = 0
 	}
 
-	for i := 1; i < len(nums); i++ {
+	// 遍历每个元素
+	for i := 1; i <= len(nums); i++ {
 		for j := 0; j <= target; j++ {
-			if j >= nums[i] {
-				dp[i][j] = max(dp[i-1][j], dp[i-1][j-nums[i]]+nums[i])
-				continue
+			if j >= nums[i-1] {
+				dp[i][j] = max(dp[i-1][j], dp[i-1][j-nums[i-1]]+nums[i-1])
+			} else {
+				dp[i][j] = dp[i-1][j]
 			}
-
-			dp[i][j] = dp[i-1][j]
 		}
 	}
-	return dp[len(nums)-1][target] == target
+
+	return dp[len(nums)][target] == target
 }

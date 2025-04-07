@@ -68,7 +68,7 @@ func findMaxForm(strs []string, m int, n int) int {
 }
 
 // 二维DP解法（空间优化）
-func findMaxForm(strs []string, m int, n int) int {
+func findMaxForm1(strs []string, m int, n int) int {
 	// 1. 确定dp定义
 	// dp[j][k] 表示使用最多 j 个 0 和 k 个 1 的情况下最多可以得到的字符串数量。
 

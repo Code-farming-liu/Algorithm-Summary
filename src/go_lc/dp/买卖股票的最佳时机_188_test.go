@@ -29,7 +29,7 @@ package dp
 0 <= prices[i] <= 1000
 */
 
-func maxProfit1(k int, prices []int) int {
+func maxProfit6(k int, prices []int) int {
 	dp := make([][][]int, len(prices))
 	for i := 0; i < len(dp); i++ {
 		dp[i] = make([][]int, k+1)
